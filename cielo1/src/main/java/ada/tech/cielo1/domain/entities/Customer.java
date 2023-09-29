@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 import java.util.UUID;
 
 @Getter
-@NoArgsConstructor
 @AllArgsConstructor
 public class Customer {
     private UUID uuid;
@@ -33,14 +32,14 @@ public class Customer {
     }
 
     public void changeCpf(Cpf cpf) {
-        if (this.cpf.equals(cpf)) {
+        if (this.cpf.getValue().equals(cpf.getValue())) {
             throw new BadRequestException("The new cpf is the same as the current cpf");
         }
         this.cpf = cpf;
     }
 
     public void changeEmail(Email email) {
-        if (this.email.equals(email)) {
+        if (this.email.getValue().equals(email.getValue())) {
             throw new BadRequestException("The new email is the same as the current email");
         }
         this.email = email;

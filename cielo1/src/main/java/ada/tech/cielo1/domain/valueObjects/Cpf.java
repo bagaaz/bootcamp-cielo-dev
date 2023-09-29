@@ -8,14 +8,14 @@ public class Cpf {
     private final String value;
 
     public Cpf(String value) {
-        if (!isValue(value)) {
+        if (!isValid(value)) {
             throw new BadRequestException("Invalid CPF");
         }
 
         this.value = value;
     }
 
-    private boolean isValue(String value) {
+    private boolean isValid(String value) {
         if (value.length() != 11) {
             return false;
         }

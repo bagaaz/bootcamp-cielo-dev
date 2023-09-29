@@ -39,14 +39,14 @@ public class Company {
     }
 
     public void changeCnpj(Cnpj cnpj) {
-        if (this.cnpj.equals(cnpj)) {
+        if (this.cnpj.getValue().equals(cnpj.getValue())) {
             throw new BadRequestException("CNPJ is the same as the current one");
         }
         this.cnpj = cnpj;
     }
 
     private void verifyMerchantCategoryCodeSize(String value) {
-        if (value.length() > 4) {
+        if (value == null || value.length() > 4) {
             throw new BadRequestException("Merchant category code must be less than 4 characters");
         }
     }

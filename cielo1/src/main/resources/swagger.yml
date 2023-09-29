@@ -28,9 +28,11 @@ paths:
                 companyCnpj:
                   type: string
                   description: É obrigatório apenas quando o tipo de cliente for pessoa jurídica.
+                  required: false
                 companyName:
                   type: string
                   description: (Razão Social) É obrigatório apenas quando o tipo de cliente for pessoa jurídica.
+                  required: false
       responses:
         201:
           description: Cliente criado com sucesso.
