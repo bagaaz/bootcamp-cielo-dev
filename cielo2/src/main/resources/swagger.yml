@@ -1,0 +1,141 @@
+openapi: "3.0.3"
+info:
+  version: "1.0.0"
+  title: "API de Gerenciamento de Clientes"
+  description: "Documentação da API para gerenciamento de clientes."
+
+paths:
+  /customers:
+    post:
+      summary: Cria um novo cliente
+      description: Cria um novo registro de cliente com as informações fornecidas.
+      requestBody:
+        description: Dados do cliente a serem adicionados.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                fullName:
+                  type: string
+                cpf:
+                  type: string
+                email:
+                  type: string
+                merchantCategoryCode:
+                  type: string
+                companyCnpj:
+                  type: string
+                  description: É obrigatório apenas quando o tipo de cliente for pessoa jurídica.
+                  required: false
+                companyName:
+                  type: string
+                  description: (Razão Social) É obrigatório apenas quando o tipo de cliente for pessoa jurídica.
+                  required: false
+      responses:
+        201:
+          description: Cliente criado com sucesso.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  uuid:
+                    type: string
+        400:
+          description: Requisição inválida.
+
+  /customers/{uuid}:
+    get:
+      summary: Retorna um cliente por UUID
+      description: Retorna as informações de um cliente com base em seu UUID.
+      parameters:
+        - name: uuid
+          in: path
+          description: UUID do cliente a ser recuperado.
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Cliente encontrado.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  uuid:
+                    type: string
+                  fullName:
+                    type: string
+                  cpf:
+                    type: string
+                  email:
+                    type: string
+                  merchantCategoryCode:
+                    type: string
+                  companyCnpj:
+                    type: string
+                    description: Retorno é null quando o usuario é pessoa física.
+                  companyName:
+                    type: string
+                    description: (Razão Social) Retorno é null quando o usuario é pessoa física.
+        404:
+          description: Cliente não encontrado.
+
+    patch:
+      summary: Atualiza informações do cliente por UUID
+      description: Atualiza as informações de um cliente com base em seu UUID.
+      parameters:
+        - name: uuid
+          in: path
+          description: UUID do cliente a ser atualizado.
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Novos dados do cliente a serem atualizados.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                fullName:
+                  type: string
+                cpf:
+                  type: string
+                email:
+                  type: string
+                merchantCategoryCode:
+                  type: string
+                companyCnpj:
+                  type: string
+                  description: É obrigatório apenas quando o tipo de cliente for pessoa jurídica.
+                companyName:
+                  type: string
+                  description: (Razão Social) É obrigatório apenas quando o tipo de cliente for pessoa jurídica.
+      responses:
+        200:
+          description: Cliente atualizado com sucesso.
+        400:
+          description: Requisição inválida.
+        404:
+          description: Cliente não encontrado.
+
+    delete:
+      summary: Remove um cliente por UUID
+      description: Remove um cliente com base em seu UUID.
+      parameters:
+        - name: uuid
+          in: path
+          description: UUID do cliente a ser removido.
+          required: true
+          schema:
+            type: string
+      responses:
+        204:
+          description: Cliente removido com sucesso.
+        404:
+          description: Cliente não encontrado.
