@@ -59,7 +59,7 @@ O projeto visa ter uma cobertura de testes unitários de 70% para a camada de do
 ## Como Testar
 
 1. Execute o projeto seguindo as instruções na seção 'Execução do Projeto'.
-2. Abra o Swagger na URL: `http://localhost:8080/swagger-ui/`.
+2. Abra o Swagger na URL: `http://localhost:8080/swagger-ui/index.html`.
 3. Use as rotas disponíveis para criar, atualizar, excluir e consultar clientes.
 
 ## Execução do Projeto
