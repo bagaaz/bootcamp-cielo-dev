@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>ada.tech</groupId>
-    <artifactId>cielo3</artifactId>
+    <artifactId>cielo2</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>cielo3</name>
-    <description>cielo3</description>
+    <name>cielo2</name>
+    <description>cielo2</description>
     <properties>
         <java.version>17</java.version>
     </properties>

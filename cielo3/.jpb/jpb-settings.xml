@@ -5,7 +5,7 @@
     <persistence-units>
       <persistence-unit name="Default">
         <packages>
-          <package value="ada.tech.cielo3" />
+          <package value="ada.tech.cielo2" />
         </packages>
       </persistence-unit>
     </persistence-units>

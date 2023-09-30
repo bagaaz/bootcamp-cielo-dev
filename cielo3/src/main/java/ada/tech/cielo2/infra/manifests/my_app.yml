@@ -1,0 +1,62 @@
+kind: app
+metadata:
+  name: my-app1
+  labels:
+    app: my-app1
+    since: my-app2
+definition:
+  modules:
+   -  name: sqs_sns
+      spec:
+        sqs:
+          name: sms_queue
+          delay_seconds: 0
+          max_message_size: 262144
+          message_retention_seconds: 345600
+          visibility_timeout_seconds: 30
+          fifo_queue: false
+        sns:
+          topic:
+            name: sms_topic
+        subscribe:
+          protocol: sns
+   -  name: apigateway
+      spec:
+        rest_api:
+            name: "my-api"
+            description: this is my api
+        s3:
+            name: oapi-my-api-bucket
+            object:
+                key: openapi.yaml
+                source: ""
+                content_type: "application/x-yaml"
+        api_gateway:
+            stage:
+                name: dev
+            integration:
+                http_method:
+                type:
+                integration_http_method:
+            method:
+                http_method:
+                authorization:
+            method_response:
+                http_method:
+                status_code:
+                response_parameters:
+            settings:
+                method_path:
+                settigs:
+            transform:
+                function:
+                    filename:
+                    name:
+                    arn:
+                    runtime:
+                    code_hash:
+                permission:
+                    statment_id:
+                    action:
+                    principal:
+    
